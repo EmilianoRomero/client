@@ -1,0 +1,73 @@
+/*Global*/
+* {
+  padding   : 0;
+  margin    : 0;
+}
+
+/*Allows the body to grow as high as the content in it requires.*/
+/*Forces the body not to get any smaller than then window height.*/
+.App {
+height: 100%;
+min-height: 100%;
+}
+
+/*width: 100vw; and height: 100vh stretch to the full width and height of the device*/
+.container {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  /*grid-template-rows: 5% 15% 7.5% 7.5% 5% 50% 5%;*/
+  grid-template-areas:
+    "header"
+    "logo"
+    "moto"
+    "arrow"
+    "titleGallery"
+    "imgGallery"
+    "slideBar";
+  grid-template-rows: auto;
+  justify-content: stretch;
+  align-content: stretch;
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+.header {
+  display        : flex;
+  flex-direction : row;
+  flex-wrap      : nowrap;
+  justify-content: space-around;
+  width          : 100%;
+  height         : auto;
+  background     : rgb(100, 150, 20);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width : 100%;
+  height : auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.logoImg {
+  object-fit: cover;
+  width: 70%;
+}
+
+.arrow {
+  display        : flex;
+  flex-direction : row;
+  flex-wrap      : nowrap;
+  justify-content: center;
+  align-items    : center;
+  align-content  : center;
+}
+
+.arrowImg {
+  object-fit: cover;
+  width     : 20%;
+}
