@@ -7,13 +7,49 @@ import Menu from './component/Header/Menu';
 import Login from "./component/Header/Login";
 import Logo from "./component/Images/MYtineraryLogo.png";
 import Arrow from "./component/Images/circled-right-2.png";
-
+import SideDrawer from './component/SideDrawer/SideDrawer';
+import Backdrop from './component/Backdrop/Backdrop';
 
 export default class App extends Component {
+  //We need to be able to listen to the click on the menu,
+  //and remove the side drawer and the back drop
+  //Initial state: oculto por defecto
+  state = {
+    sideDrawerOpen: false
+  };
+
+  //In the function we receive the previous state as an argument,
+  //then return the object with the updated state and we declare it
+  //open with the opposite of the previous state, => if it was T, then
+  //will be set to F and the opposite.
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {sideDrawerOpen: !prevState.sideDrawerOpen}
+    });
+  };
+
+  //Closing the side drawer. No importa el estado previo, dejar siempre closed.
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  }
+
   render() {
+    //let sideDrawer;
+    let backdrop;
+    //if this state is T, then...
+    //We call the components here instead after the return,
+    //and in its former place within the structure we place
+    //the variables, making reference to these components.
+    //Con el Backdrop component pasa lo mismo: paso la referencia a esta función,
+    //y se la llama desde su componente.
+    if (this.state.sideDrawerOpen) {
+      //sideDrawer= <SideDrawer />;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+    }
+
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className="App" style={{height: '100%'}}>
           <div className="container">
             <Switch>
               <Route exact path="./screen/Landing" component={Landing} />
@@ -21,7 +57,17 @@ export default class App extends Component {
             </Switch>
             <div className="header">
               <Login />
-              <Menu />
+              {/*Paso una referencia al método, no es que lo ejecuto*/}
+              {/*Ejecutar implica que esté escrito así drawerToggleClickHandler(),*/}
+              {/*con los paréntesis al final*/}
+              {/*Referir: pasar dirección al método vía propiedad del componente*/}
+              {/*Esto se recibe en DrawerToggleButton component en Menu*/}
+              {/*Me llevo a {sideDrawer}*/}
+              <Menu drawerClickHandler={this.drawerToggleClickHandler}/>
+              {/*{sideDrawer} Se va y lo dejo siempre presente con una prop*/}
+              {/*voy a ir a modificarlo al componente en sí*/}
+              <SideDrawer show={this.state.sideDrawerOpen}/>
+              {backdrop}
             </div>
             <div className="logo">
               <img className="logoImg" src={Logo} alt="" />

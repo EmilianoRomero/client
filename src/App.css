@@ -4,13 +4,6 @@
   margin    : 0;
 }
 
-/*Allows the body to grow as high as the content in it requires.*/
-/*Forces the body not to get any smaller than then window height.*/
-.App {
-height: 100%;
-min-height: 100%;
-}
-
 /*width: 100vw; and height: 100vh stretch to the full width and height of the device*/
 .container {
   display: grid;
@@ -34,6 +27,8 @@ min-height: 100%;
 
 .header {
   display        : flex;
+  /*top: 0;
+  left: 0;*/
   flex-direction : row;
   flex-wrap      : nowrap;
   justify-content: space-around;
@@ -58,7 +53,8 @@ min-height: 100%;
   width: 70%;
 }
 
-.arrow {
+.arrow,
+.motoTxt {
   display        : flex;
   flex-direction : row;
   flex-wrap      : nowrap;
@@ -67,7 +63,15 @@ min-height: 100%;
   align-content  : center;
 }
 
+.motoTxt {
+  padding-top: 60px;
+}
+
 .arrowImg {
   object-fit: cover;
   width     : 20%;
+}
+
+.titleGalleryTxt {
+  padding-left: 50px;
 }
