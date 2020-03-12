@@ -3,11 +3,14 @@ import Landing from "./screen/Landing"
 import Cities from "./cities"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import "./App.css"
-import Menu from "./component/01FormerComponents/V1/Header/Menu"
-import Login from "./component/01FormerComponents/V1/Header/Login"
+import Menu from "./component/Header/Menu"
+import Login from "./component/Header/Login"
 import Logo from "./component/Images/MYtineraryLogo.png"
 import Arrow from "./component/Images/circled-right-2.png"
-import Home from "./component/Images/homeIcon.png"
+import SideDrawer from "./component/SideDrawer/SideDrawer"
+import Backdrop from "./component/Backdrop/Backdrop"
+//import Slider from "./component/Slider/Slider" --> activar para ver original
+//import Carousel from './component/Carousel/Carousel' --> NO
 
 export default class App extends Component {
   //We need to be able to listen to the click on the menu,
