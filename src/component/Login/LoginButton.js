@@ -1,8 +1,10 @@
 import React from "react";
-import './Login.css';
+import "./LoginButton.css";
 
 const Login = props => (
-  <div className="login"> <h1>botón login</h1></div>
+  <div className="loginLink">
+    <button className="loginButton">Log in</button>
+  </div>
 );
 
-export default Login;
+export default Login

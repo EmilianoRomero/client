@@ -1,8 +1,9 @@
 import React from "react"
-import './Register.css'
+import './RegisterButton.css'
 
 const Register = props => (
-    <div className="register">
+    <div className="registerLink">
+        <button className="registerButton">Create Account</button>
     </div>
 );
 
