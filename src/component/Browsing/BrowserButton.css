@@ -1,0 +1,21 @@
+.startBrowsing {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.arrowImg {
+    object-fit: contain;
+    width: 30%;
+    height: auto;
+  }
+
+.browsingLink-active {
+    color: tomato;
+    }
