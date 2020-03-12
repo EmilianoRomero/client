@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import Landing from "./screen/Landing";
-import Cities from "./cities";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./App.css";
-import Menu from './component/Header/Menu';
-import Login from "./component/Header/Login";
-import Logo from "./component/Images/MYtineraryLogo.png";
-import Arrow from "./component/Images/circled-right-2.png";
-import SideDrawer from './component/SideDrawer/SideDrawer';
-import Backdrop from './component/Backdrop/Backdrop';
+import React, { Component } from "react"
+import Landing from "./screen/Landing"
+import Cities from "./cities"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import "./App.css"
+import Menu from "./component/Header/Menu"
+import Login from "./component/Header/Login"
+import Logo from "./component/Images/MYtineraryLogo.png"
+import Arrow from "./component/Images/circled-right-2.png"
+import SideDrawer from "./component/SideDrawer/SideDrawer"
+import Backdrop from "./component/Backdrop/Backdrop"
+import Slider from "./component/Slider/Slider"
 
 export default class App extends Component {
   //We need to be able to listen to the click on the menu,
@@ -23,15 +24,15 @@ export default class App extends Component {
   //open with the opposite of the previous state, => if it was T, then
   //will be set to F and the opposite.
   drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return {sideDrawerOpen: !prevState.sideDrawerOpen}
+    this.setState(prevState => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
     });
   };
 
   //Closing the side drawer. No importa el estado previo, dejar siempre closed.
   backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
-  }
+    this.setState({ sideDrawerOpen: false });
+  };
 
   render() {
     //let sideDrawer;
@@ -44,13 +45,13 @@ export default class App extends Component {
     //y se la llama desde su componente.
     if (this.state.sideDrawerOpen) {
       //sideDrawer= <SideDrawer />;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
+      backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
     return (
       <BrowserRouter>
-        <div className="App" style={{height: '100%'}}>
-          <div className="container">
+        <div className="App">
+          <div className="container-fluid" id="main-container-fluid">
             <Switch>
               <Route exact path="./screen/Landing" component={Landing} />
               <Route exact path="./cities" component={Cities} />
@@ -63,10 +64,10 @@ export default class App extends Component {
               {/*Referir: pasar dirección al método vía propiedad del componente*/}
               {/*Esto se recibe en DrawerToggleButton component en Menu*/}
               {/*Me llevo a {sideDrawer}*/}
-              <Menu drawerClickHandler={this.drawerToggleClickHandler}/>
+              <Menu drawerClickHandler={this.drawerToggleClickHandler} />
               {/*{sideDrawer} Se va y lo dejo siempre presente con una prop*/}
               {/*voy a ir a modificarlo al componente en sí*/}
-              <SideDrawer show={this.state.sideDrawerOpen}/>
+              <SideDrawer show={this.state.sideDrawerOpen} />
               {backdrop}
             </div>
             <div className="logo">
@@ -84,8 +85,8 @@ export default class App extends Component {
             <div className="titleGallery">
               <h3 className="titleGalleryTxt">Popular MYtineraries</h3>
             </div>
-            <div className="imgGallery">
-              <h2>modal</h2>
+            <div className="img-gallery">
+                <Slider />
             </div>
             <div className="slideBar">
               <h2>slide bar</h2>
@@ -96,3 +97,44 @@ export default class App extends Component {
     );
   }
 }
+
+
+/* ESTO VA JUSTO DESPUÉS DE
+<div className="img-gallery">
+  <div className="container-fluid" id="img-gallery-wrapper">
+-------------------------------------------------------------------
+<div className="row" id="row1">
+                  <div className="col" id="col11">
+                    <img
+                      className="imagen"
+                      src="https://www.findingtheuniverse.com/wp-content/uploads/2013/05/IMG_20130311_17025261.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div className="col0" />
+                  <div className="col" id="col12">
+                    <img
+                      className="imagen"
+                      src="https://www.findingtheuniverse.com/wp-content/uploads/2013/05/IMG_20130312_20072861.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="row" id="row2">
+                  <div className="col" id="col21">
+                    <img
+                      className="imagen"
+                      src="https://www.findingtheuniverse.com/wp-content/uploads/2013/05/IMG_20130316_08092591.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div className="col0" />
+                  <div className="col" id="col22">
+                    <img
+                      className="imagen"
+                      src="https://www.findingtheuniverse.com/wp-content/uploads/2013/05/IMG_20130321_14353361.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+*/
